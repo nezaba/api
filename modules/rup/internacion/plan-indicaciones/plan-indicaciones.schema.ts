@@ -13,7 +13,7 @@ export const PlanIndicacionesEstadoSchema = new Schema({
     // active | on-hold | cancelled | completed | entered-in-error | stopped | draft | unknown | edited
     tipo: String,
     fecha: Date,
-    motivo: String,
+    observaciones: String,
 }, { _id: false });
 PlanIndicacionesEstadoSchema.plugin(AuditPlugin);
 
