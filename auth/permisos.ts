@@ -178,6 +178,17 @@ export default [
             { key: 'mapaDeCamas', title: 'Mapa de camas', type: 'boolean' },
             { key: 'descargarListado', title: 'Descargar listado internación', type: 'boolean' },
             { key: 'registros', title: 'Ver registros de la internación', type: 'boolean' },
+            {
+                key: 'indicaciones',
+                title: 'Plan de Indicaciones',
+                type: 'boolean',
+                visibility: 'restricted', // se mantiene oculto en tanto el p.i. no esté productivo
+                child: [
+                    { key: 'create', title: 'Crear indicación', type: 'boolean' },
+                    { key: 'validar', title: 'Validar indicación', type: 'boolean' },
+                    { key: 'ejecutar', title: 'Ejecutar indicación', type: 'boolean' }
+                ]
+            }
         ]
 
     },
