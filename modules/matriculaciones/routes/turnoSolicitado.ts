@@ -1,6 +1,8 @@
 import { Profesional } from '../../../core/tm/schemas/profesional';
 import * as express from 'express';
 import { turnoSolicitado } from '../schemas/turnoSolicitado';
+import * as turno from '../schemas/turno';
+import * as moment from 'moment';
 
 const router = express.Router();
 
@@ -13,9 +15,9 @@ router.post('/turnoSolicitados', async (req, res, next) => {
         req.body.profesionalMatriculado = true;
     }
     const newProfesional = new turnoSolicitado(req.body);
-    newProfesional.save((error) => {
+    newProfesional.save(async (error) => {
         if (error) {
-            return next(error);
+            return next('error-turno');
         }
         res.json(newProfesional);
     });
