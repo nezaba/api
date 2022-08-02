@@ -22,7 +22,6 @@ import { IPrestacionDoc } from '../prestaciones.interface';
 import { Prestacion } from '../schemas/prestacion';
 import { Auth } from './../../../auth/auth.class';
 import { parseDate } from './../../../shared/parse';
-import { IInternacionResumen } from '../internacion/resumen/internacion-resumen.schema';
 
 const router = express.Router();
 
@@ -679,6 +678,7 @@ router.patch('/prestaciones/:id', (req: Request, res, next) => {
 
             if (req.body.estado && req.body.estado.tipo === 'validada') {
                 EventCore.emitAsync('rup:prestacion:validate', data);
+                EventCore.emitAsync('mapa-camas:plan-indicacion:create', data);
 
                 // buscarYCrearSolicitudes y saveTurnoProfesional se hace acá para obtener datos del REQ a futuro se debería asociar al EventCore
                 buscarYCrearSolicitudes(prestacion, req);
