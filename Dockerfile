@@ -7,6 +7,9 @@ RUN apk update && apk upgrade && apk add --no-cache git
 
 WORKDIR /usr/src/api
 
+ADD https://github.com/ufoscout/docker-compose-wait/releases/download/2.9.0/wait /wait
+RUN chmod +x /wait
+
 COPY package.json package-lock.json ./
 COPY packages ./packages
 
